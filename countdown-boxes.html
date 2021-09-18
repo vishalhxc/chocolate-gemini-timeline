@@ -1,0 +1,85 @@
+<script type="text/javascript">
+    var expirationDate = new Date(Date.UTC(2021, 8, 17, 21, 30)).getTime();
+    let timer = setInterval(function () {
+        let diff = expirationDate - new Date().getTime();
+
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (diff <= 0 && diff >= -3600000) {
+            clearInterval(timer);
+            document.getElementById("countdown-container").innerHTML = "<h3>Livestreaming now!!</h3>";
+        } else if (diff < -3600000) {
+            clearInterval(timer);
+            document.getElementById("countdown-container").innerHTML = "";
+        } else {
+            if (days <= 0) {
+                let daysContainer = document.getElementById("days-container");
+                daysContainer.style.visibility = "hidden";
+                daysContainer.style.width = "0";
+                daysContainer.style.display = "none";
+
+                if (hours <= 0) {
+                    let hoursContainer = document.getElementById("hours-container");
+                    hoursContainer.style.visibility = "hidden";
+                    hoursContainer.style.width = "0";
+                    hoursContainer.style.display = "none";
+
+                    if (minutes <= 0) {
+                        let minutesContainer = document.getElementById("minutes-container");
+                        minutesContainer.style.visibility = "hidden";
+                        minutesContainer.style.width = "0";
+                        minutesContainer.style.display = "none";
+                    }
+                }
+            }
+            
+            document.getElementById("days-text").innerHTML = days;
+            document.getElementById("hours-text").innerHTML = hours;
+            document.getElementById("minutes-text").innerHTML = minutes;
+            document.getElementById("seconds-text").innerHTML = seconds;
+        }
+    }, 1000);
+</script>
+
+<style>
+    #countdown-container {
+        text-align: center;
+        font-size: .8em;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    #days-container,
+    #hours-container,
+    #minutes-container,
+    #seconds-container {
+		color: #FDF6ED;      
+        display: inline-block;
+        padding: 20px;
+        width: 85px;
+        height: 85px;
+        background: #832467;
+        border-radius: .4rem;
+        margin-bottom: 3px;
+    }
+
+    .numbers {
+        font-size: 4em;
+    }
+</style>
+
+<div id="countdown-container">
+    <div id="days-container">
+        <div class="numbers" id="days-text"></div>days
+    </div>
+    <div id="hours-container">
+        <div class="numbers" id="hours-text"></div>hours
+    </div>
+    <div id="minutes-container">
+        <div class="numbers" id="minutes-text"></div>minutes
+    </div>
+    <div id="seconds-container">
+        <div class="numbers" id="seconds-text"></div>seconds
+    </div>

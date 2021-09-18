@@ -1,0 +1,46 @@
+<script type="text/javascript">
+  var expirationDate = new Date(Date.UTC(2021, 8, 17, 21, 30)).getTime();
+  var countdown = setInterval(function () {
+    var now = new Date().getTime();
+    var remainingTimeMs = expirationDate - now;
+
+    var days = displayTime(Math.floor(remainingTimeMs / (1000 * 60 * 60 * 24)), " days", 0, false);
+    var hours = displayTime(Math.floor((remainingTimeMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2,0), ":", 2, false);
+    var minutes = displayTime(Math.floor((remainingTimeMs % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2,0), ":", 2, false);
+    var seconds = displayTime(Math.floor((remainingTimeMs % (1000 * 60)) / 1000).toString().padStart(2,0), ":", 2, true);
+
+    if (remainingTimeMs <= 0 && remainingTimeMs >= -3600000) {
+      clearInterval(countdown);
+      document.getElementById("countdown-timer").innerHTML = "<h1>Live now!</h1>";
+    } else if (remainingTimeMs < -3600000) {
+      clearInterval(countdown);
+      document.getElementById("countdown-timer").innerHTML = "";
+    } else {
+      document.getElementById("countdown-timer").innerHTML = "<h3>" + days + " " + hours + " " + minutes + " " + seconds + "</h3>";
+    }
+  }, 1000);
+
+  function displayTime(number, label, digitPadding, alwaysVisible) {
+      return number.toString().padStart(digitPadding, 0) + "" + label;
+    
+  }
+</script>
+
+<style>
+  #countdown-container {
+    font-family: Montserrat;
+    width: 50%;
+    height: 200px; 
+  }
+
+  #countdown-timer #countdown-days {
+    
+  }
+</style>
+<span id="countdown-timer"></span>
+<div id="countdown-container">
+  <div id="days-container"></div>
+  <div id="hours-container"></div>
+  <div id="minutes-container"></div>
+  <div id="seconds-container"></div>
+</div>

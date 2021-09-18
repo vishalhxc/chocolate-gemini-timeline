@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    function viewProgram() {
+        let programContent = document.getElementById("program-content");
+        if (programContent.style.visibility === "hidden") {
+            document.getElementById("program-button").innerHTML = "Hide Program"
+            programContent.style.visibility = "visible";
+            programContent.style.display = "block";
+        } else {
+            document.getElementById("program-button").innerHTML = "View Program"
+            programContent.style.visibility = "hidden";
+            programContent.style.display = "none";
+        }
+    }
+</script>
+<style>
+    #program-content {
+        visibility: hidden;
+        display: none;
+    }
+    .float-left {
+        float: left;
+    }
+    .float-right {
+        float: right;
+    }
+    .clear-both {
+        clear: both;
+    }
+</style>
+<button id="program-button" onclick="viewProgram()">View Program</button>
+<div id="program-content">
+    <img class="float-left" width="49%" src="https://images.squarespace-cdn.com/content/v1/60e91b0c5c7a40576440a08c/a5d6adac-8963-45fd-8569-12af606aa750/program-ceremony.png"></img>
+    <img class="float-right" width="49%" width="50%" src="https://images.squarespace-cdn.com/content/v1/60e91b0c5c7a40576440a08c/486fd1e8-7f16-4e0c-a2d5-a3210cd74ec5/program-entourage.png"></img>
+</div>
+<div class="clear-both"></div>
