@@ -1,0 +1,22 @@
+<link title="timeline-styles" rel="stylesheet" href="https://media.chocolategemini.com/wedding-timeline/css/timeline.css">
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+<div id='timeline-embed' style="width: 100%; height: 75vh"></div>
+
+<script type="text/javascript">
+    var additionalOptions = {
+        font: 'https://media.chocolategemini.com/wedding-timeline/css/fonts/font.freightbigpro-montserrat.css',
+        lang: 'en',
+        initial_zoom: 1,
+        timenav_height_percentage: 10,
+        timenav_mobile_height_percentage: 10,
+        duration: 500,
+        default_bg_color: 'FDF6ED'
+    }
+
+    timeline = new TL.Timeline(
+        'timeline-embed',
+        'https://docs.google.com/spreadsheets/d/1fEEL9Bs5GOeXts_O_6ZM4bQ8pyUKVz1ED2m8u_sQ8h0/edit#gid=0',
+        additionalOptions
+    );
+</script>
